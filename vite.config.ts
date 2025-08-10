@@ -10,6 +10,11 @@ export default defineConfig({
       target: 'react',
       autoCodeSplitting: true
     }),
-    react()
-  ]
+    react(),
+  ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    },
+  }
 });
