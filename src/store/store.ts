@@ -1,16 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
-import profileReducer from '../features/profile/profile-slice';
-import { profileSlice } from "../features/profile/profile-api-slice";
+import { configureStore } from '@reduxjs/toolkit';
+import { APISlice } from 'services/api';
 
 export const store = configureStore({
   reducer: {
-    // profile: profileReducer,
-    [profileSlice.reducerPath]: profileSlice.reducer
+    [APISlice.reducerPath]: APISlice.reducer
   },
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(profileSlice.middleware);
+    return getDefaultMiddleware().concat(APISlice.middleware);
   }
-})
+});
 
 export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>;

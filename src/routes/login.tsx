@@ -5,11 +5,11 @@ import { useState } from 'react';
 import { useRegisterMutation } from 'features/register/registerSlice';
 import { Loader } from 'components/Loader/Loader';
 
-export const Route = createFileRoute('/register')({
-  component: Register
+export const Route = createFileRoute('/login')({
+  component: Login
 });
 
-function Register() {
+function Login() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -26,8 +26,6 @@ function Register() {
   return (
     <div>
       <Loader isLoading={isLoading} />
-      <Input value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-      <Input value={lastName} onChange={(e) => setLastName(e.target.value)} />
       <Input value={email} onChange={(e) => setEmail(e.target.value)} />
       <Input value={password} type="password" onChange={(e) => setPassword(e.target.value)} />
       <Button onClick={onSubmit}>Submit</Button>

@@ -10,8 +10,7 @@
 
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"],
-      "@/components": ["./src/components/*"]
+      "*": ["*"]
     },
 
     /* Bundler mode */
