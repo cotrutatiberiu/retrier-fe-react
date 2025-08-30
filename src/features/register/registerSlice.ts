@@ -1,11 +1,12 @@
+import { API_UNPROTECTED } from 'constants/endpoints';
 import { APISlice } from 'services/api';
-import type { RegisterPayload } from 'types/Profile';
+import type { RegisterRequestPayload } from 'types/Profile';
 
 export const registerSlice = APISlice.injectEndpoints({
   endpoints: (builder) => ({
-    register: builder.mutation<void, RegisterPayload>({
+    register: builder.mutation<void, RegisterRequestPayload>({
       query: (payload) => ({
-        url: '/api/auth/register',
+        url: API_UNPROTECTED.REGISTER,
         method: 'POST',
         data: payload
       })
