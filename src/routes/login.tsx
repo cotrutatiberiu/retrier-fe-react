@@ -1,21 +1,22 @@
 import { Button } from 'components/Button/Button';
 import { Input } from 'components/Input/Input';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, redirect } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useLoginMutation } from 'features/login/login';
 import { Loader } from 'components/Loader/Loader';
-import { setAccessToken } from 'features/profile/profileSlice';
+import { setAccessToken,setCsrfToken } from 'features/profile/profileSlice';
 import { useDispatch } from 'react-redux';
+import { ROUTES } from 'constants/routes';
 
-export const Route = createFileRoute('/login')({
+export const Route = createFileRoute(ROUTES.LOGIN)({
   component: Login
 });
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('test@email.com');
+  const [password, setPassword] = useState('testPassword1234');
   const [login, { isLoading }] = useLoginMutation();
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const onSubmit = async () => {
     try {
       const response = await login({
@@ -23,10 +24,10 @@ function Login() {
         password
       }).unwrap();
       dispatch(setAccessToken(response.accessToken));
-    } catch (e) {
-
-    }
-  }
+      dispatch(setCsrfToken(response.csrfToken));
+      redirect({ to: ROUTES.DASHBOARD });
+    } catch (e) {}
+  };
   return (
     <div>
       <Loader isLoading={isLoading} />

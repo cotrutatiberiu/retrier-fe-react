@@ -4,8 +4,9 @@ import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useRegisterMutation } from 'features/register/registerSlice';
 import { Loader } from 'components/Loader/Loader';
+import { ROUTES } from 'constants/routes';
 
-export const Route = createFileRoute('/register')({
+export const Route = createFileRoute(ROUTES.REGISTER)({
   component: Register
 });
 
