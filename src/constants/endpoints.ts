@@ -5,4 +5,7 @@ export const API_UNPROTECTED = {
   AUTHENTICATED: '/api/auth/authenticated'
 };
 
-export const API_PROTECTED = {};
+export const API_PROTECTED = {
+  WEATHER: '/api/weather/today',
+  NEWS: '/api/news/today'
+};

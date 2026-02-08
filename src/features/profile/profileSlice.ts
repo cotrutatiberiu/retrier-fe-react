@@ -27,9 +27,12 @@ const profileSlice = createSlice({
     },
     logout(state) {
       state = initialState;
+    },
+    setUserAuthenticated(state, action: PayloadAction<string | null>) {
+      state.email = action.payload;
     }
   }
 });
 
-export const { setAccessToken, setCsrfToken, logout } = profileSlice.actions;
+export const { setAccessToken, setCsrfToken, logout, setUserAuthenticated } = profileSlice.actions;
 export default profileSlice.reducer;
